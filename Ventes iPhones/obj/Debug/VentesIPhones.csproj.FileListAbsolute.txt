@@ -1,0 +1,44 @@
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\TestPneus.exe.config
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\TestPneus.xml
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\TestPneus.exe
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\TestPneus.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\Tansaction.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\Tansaction.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\VentesIPhones.csproj.AssemblyReference.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.VentesIPhones.resources
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.Properties.Resources.resources
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\VentesIPhones.csproj.GenerateResource.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\VentesIPhones.csproj.CoreCompileInputs.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\VentesIPhones.csproj.CopyComplete
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.exe
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\bin\Debug\TestPneus.exe.config
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\bin\Debug\TestPneus.xml
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\bin\Debug\TestPneus.exe
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\bin\Debug\TestPneus.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\bin\Debug\Tansaction.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\bin\Debug\Tansaction.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\VentesIPhones.csproj.AssemblyReference.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\TestPneus.Properties.Resources.resources
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\VentesIPhones.csproj.GenerateResource.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\VentesIPhones.csproj.CoreCompileInputs.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\VentesIPhones.csproj.CopyComplete
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\TestPneus.exe
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\TestPneus.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Ventes iPhones\obj\Debug\VentesIPhones.VentesIPhones.resources
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\TestPneus.exe.config
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\TestPneus.xml
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\TestPneus.exe
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\TestPneus.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\Tansaction.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\Tansaction.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\VentesIPhones.csproj.AssemblyReference.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\VentesIPhones.VentesIPhones.resources
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\TestPneus.Properties.Resources.resources
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\VentesIPhones.csproj.GenerateResource.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\VentesIPhones.csproj.CoreCompileInputs.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\VentesIPhones.csproj.CopyComplete
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\TestPneus.exe
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\obj\Debug\TestPneus.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\Types.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Ventes iPhones\bin\Debug\Types.pdb

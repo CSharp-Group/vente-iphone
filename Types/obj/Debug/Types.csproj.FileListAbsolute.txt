@@ -1,0 +1,6 @@
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Types\bin\Debug\Types.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Types\bin\Debug\Types.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Types\obj\Debug\Types.csproj.AssemblyReference.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Types\obj\Debug\Types.csproj.CoreCompileInputs.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Types\obj\Debug\Types.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Types\obj\Debug\Types.pdb

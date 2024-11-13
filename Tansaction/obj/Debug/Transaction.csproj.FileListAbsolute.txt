@@ -1,0 +1,12 @@
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Tansaction\bin\Debug\Tansaction.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Tansaction\bin\Debug\Tansaction.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Tansaction\obj\Debug\Transaction.csproj.AssemblyReference.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Tansaction\obj\Debug\Transaction.csproj.CoreCompileInputs.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Tansaction\obj\Debug\Tansaction.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\Tansaction\obj\Debug\Tansaction.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Tansaction\bin\Debug\Tansaction.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Tansaction\bin\Debug\Tansaction.pdb
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Tansaction\obj\Debug\Transaction.csproj.AssemblyReference.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Tansaction\obj\Debug\Transaction.csproj.CoreCompileInputs.cache
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Tansaction\obj\Debug\Tansaction.dll
+C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\VentesIphones\Tansaction\obj\Debug\Tansaction.pdb
