@@ -132,5 +132,10 @@ namespace VentesIPhones
 
         #endregion
 
+        private void MaskedTextBox_Enter(object sender, EventArgs e)
+        {
+            MaskedTextBox maskedTextBox = sender as MaskedTextBox;
+            maskedTextBox.SelectAll();
+        }
     }
 }

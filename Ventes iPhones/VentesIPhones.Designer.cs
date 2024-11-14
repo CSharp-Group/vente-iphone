@@ -146,6 +146,7 @@
             this.telephoneMaskedTextBox.Name = "telephoneMaskedTextBox";
             this.telephoneMaskedTextBox.Size = new System.Drawing.Size(364, 26);
             this.telephoneMaskedTextBox.TabIndex = 26;
+            this.telephoneMaskedTextBox.Enter += new System.EventHandler(this.MaskedTextBox_Enter);
             // 
             // telephoneLabel
             // 
@@ -164,6 +165,7 @@
             this.codePostalMaskedTextBox.Name = "codePostalMaskedTextBox";
             this.codePostalMaskedTextBox.Size = new System.Drawing.Size(364, 26);
             this.codePostalMaskedTextBox.TabIndex = 24;
+            this.codePostalMaskedTextBox.Enter += new System.EventHandler(this.MaskedTextBox_Enter);
             // 
             // adresseMaskedTextBox
             // 
@@ -172,6 +174,7 @@
             this.adresseMaskedTextBox.Name = "adresseMaskedTextBox";
             this.adresseMaskedTextBox.Size = new System.Drawing.Size(364, 26);
             this.adresseMaskedTextBox.TabIndex = 23;
+            this.adresseMaskedTextBox.Enter += new System.EventHandler(this.MaskedTextBox_Enter);
             // 
             // prenomMaskedTextBox
             // 
@@ -180,6 +183,7 @@
             this.prenomMaskedTextBox.Name = "prenomMaskedTextBox";
             this.prenomMaskedTextBox.Size = new System.Drawing.Size(364, 26);
             this.prenomMaskedTextBox.TabIndex = 22;
+            this.prenomMaskedTextBox.Enter += new System.EventHandler(this.MaskedTextBox_Enter);
             // 
             // nomMaskedTextBox
             // 
@@ -188,6 +192,7 @@
             this.nomMaskedTextBox.Name = "nomMaskedTextBox";
             this.nomMaskedTextBox.Size = new System.Drawing.Size(364, 26);
             this.nomMaskedTextBox.TabIndex = 21;
+            this.nomMaskedTextBox.Enter += new System.EventHandler(this.MaskedTextBox_Enter);
             // 
             // codePostalLabel
             // 
