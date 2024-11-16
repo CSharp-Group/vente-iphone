@@ -396,3 +396,54 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Ignore build results
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+**/TestResults/
+**/.vs/
+
+# Ignore all .dll, .pdb, and .exe files
+*.dll
+*.pdb
+*.exe
+*.log
+*.cache
+*.suo
+*.user
+*.tmp
+*.csproj.user
+
+# Ignore Visual Studio-specific files
+.vscode/
+.vs/
+*.sln.docstates
+*.sln.iml
+*.csproj.DotSettings
+*.dbmdl
+*.dbproj.schemaview
+*.tlog
+*.ipch
+*.opendb
+*.opensdf
+*.sdf
+
+# Ignore temporary files
+~$*
+*.tmp
+*.bak
+*.old
+*.swp
+
+# Ignore coverage reports
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# Ignore package files
+*.nupkg
+*.snupkg
+packages/
+node_modules/
