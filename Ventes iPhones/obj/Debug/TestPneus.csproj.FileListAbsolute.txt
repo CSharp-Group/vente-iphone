@@ -1,9 +1,0 @@
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\TestPneus.exe.config
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\TestPneus.exe
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\bin\Debug\TestPneus.pdb
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.csproj.AssemblyReference.cache
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.Properties.Resources.resources
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.csproj.GenerateResource.cache
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.csproj.CoreCompileInputs.cache
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.exe
-C:\Users\ejalbert26\source\repos\Annee2\PROG1236 - C#\Contenu\TestPneus\obj\Debug\TestPneus.pdb
