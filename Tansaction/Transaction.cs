@@ -196,12 +196,10 @@ namespace TransactionNS
                     return tPrix[marque, model];
                 }
                 else
-                    //throw new ArgumentOutOfRangeException("Erreur: Model invalide");
-                    throw new ArgumentOutOfRangeException(g.tMessagesErreursStr[(int)g.CodeErreurs.ceException]);
+                    throw new ArgumentOutOfRangeException("Erreur: Model invalide");
             }
             else
-                //throw new ArgumentOutOfRangeException("Erreur: Marque invalide");
-                throw new ArgumentOutOfRangeException(g.tMessagesErreursStr[(int)g.CodeErreurs.ceException]);
+                throw new ArgumentOutOfRangeException("Erreur: Marque invalide");
         }
 
         public decimal GetPrix(string marque, string model)
@@ -216,12 +214,10 @@ namespace TransactionNS
                     return tPrix[positionMarque, positionModel];
                 }
                 else
-                    //throw new ArgumentException("Erreur: Model invalide");
-                    throw new ArgumentException(g.tMessagesErreursStr[(int)g.CodeErreurs.ceException]);
+                    throw new ArgumentException("Erreur: Model invalide");
             }
             else
-                //throw new ArgumentException("Erreur: Marque invalide");
-                throw new ArgumentException(g.tMessagesErreursStr[(int)g.CodeErreurs.ceException]);
+                throw new ArgumentException("Erreur: Marque invalide");
 
         }
 
