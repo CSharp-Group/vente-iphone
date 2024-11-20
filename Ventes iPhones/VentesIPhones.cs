@@ -143,38 +143,24 @@ namespace VentesIPhones
         {
             ValidateChildren();
             Transaction oTrans = new Transaction();
-            //oTrans = new Transaction(
-            //nomMaskedTextBox,
-            //prenomMaskedTextBox,
-            //adresseMaskedTextBox,
-            //codePostalMaskedTextBox,
-            //telephoneMaskedTextBox,
-            //typesComboBox,
-            //anneesComboBox,
-            //marquesComboBox,
-            //modelComboBox,
-            //prixLabel);
-                
-            oTrans.Nom = nomMaskedTextBox.Text;
-            oTrans.Prenom = prenomMaskedTextBox.Text;
-            oTrans.Adresse = adresseMaskedTextBox.Text;
-            oTrans.CodePostal = codePostalMaskedTextBox.Text;
-            oTrans.Telephone = telephoneMaskedTextBox.Text;
-            oTrans.Type = typesComboBox.SelectedItem.ToString();
-            oTrans.Modele = modelComboBox.SelectedItem.ToString();
-            oTrans.DateLivraison = DateTime.Now;
-            oTrans.Prix = Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency);
-
+            
             try
             {
+                oTrans.Nom = nomMaskedTextBox.Text;
+                oTrans.Prenom = prenomMaskedTextBox.Text;
+                oTrans.Adresse = adresseMaskedTextBox.Text;
+                oTrans.CodePostal = codePostalMaskedTextBox.Text;
+                oTrans.Telephone = telephoneMaskedTextBox.Text;
+                oTrans.Type = typesComboBox.SelectedItem.ToString();
+                oTrans.Modele = modelComboBox.SelectedItem.ToString();
+                oTrans.DateLivraison = DateTime.Now;
+                oTrans.Prix = Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency);
                 oTrans.Enregistrer();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
         }
     }
 }

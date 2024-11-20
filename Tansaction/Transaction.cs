@@ -13,6 +13,10 @@ namespace TransactionNS
 
     public class Transaction
     {
+        #region Champs Privés
+        private DateTime datePaiement;
+        #endregion
+
         #region Declaration des tableaux
 
         private string[] tMarques;
@@ -59,7 +63,6 @@ namespace TransactionNS
         #endregion
 
         #region Propriétés
-
 
         public int Id
         {
