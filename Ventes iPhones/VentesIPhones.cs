@@ -147,7 +147,7 @@ namespace VentesIPhones
             try
             {
                 oTrans.Enregistrer(nomMaskedTextBox.Text, prenomMaskedTextBox.Text, adresseMaskedTextBox.Text,
-                    codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text, 
+                    codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text, marquesComboBox.Text,
                     modelComboBox.Text, DateTime.Parse(dateLivraisonDateTimePicker.Text), Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency));
             }
             catch (Exception ex)

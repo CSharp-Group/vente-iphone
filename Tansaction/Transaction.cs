@@ -457,8 +457,9 @@ namespace TransactionNS
         /// Enregistrer la transaction avec des paramètres
         /// </summary>
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
-                                string type, string modele, DateTime dateLivraison, decimal prix)
+                                string type,string marque, string modele, DateTime dateLivraison, decimal prix)
         {
+            Console.WriteLine(prix);
             this.Nom = nom;
             this.Prenom = prenom;
             this.Adresse = adresse;
@@ -466,6 +467,7 @@ namespace TransactionNS
             this.Telephone = telephone;
             this.Type = type;
             this.Modele = modele;
+            this.Marque = marque;
             this.DateLivraison = dateLivraison;
             this.Prix = prix;
 
