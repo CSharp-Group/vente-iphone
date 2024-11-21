@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -146,21 +146,19 @@ namespace VentesIPhones
             
             try
             {
-                oTrans.Nom = nomMaskedTextBox.Text;
-                oTrans.Prenom = prenomMaskedTextBox.Text;
-                oTrans.Adresse = adresseMaskedTextBox.Text;
-                oTrans.CodePostal = codePostalMaskedTextBox.Text;
-                oTrans.Telephone = telephoneMaskedTextBox.Text;
-                oTrans.Type = typesComboBox.SelectedItem.ToString();
-                oTrans.Modele = modelComboBox.SelectedItem.ToString();
-                oTrans.DateLivraison = DateTime.Now;
-                oTrans.Prix = Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency);
-                oTrans.Enregistrer();
+                oTrans.Enregistrer(nomMaskedTextBox.Text, prenomMaskedTextBox.Text, adresseMaskedTextBox.Text,
+                    codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text, 
+                    modelComboBox.Text, DateTime.Parse(dateLivraisonDateTimePicker.Text), Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency));
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void DateLivrasionValidating()
+        {
+           
         }
     }
 }
