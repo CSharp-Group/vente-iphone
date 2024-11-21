@@ -25,7 +25,7 @@ namespace TransactionNS
         private enum CodeErreurs
         {
             nomObligatoire,
-            prenomObligatoire,
+           prenomObligatoire,
             addressObligatoire,
             codePostalObligatoire,
             codePostalInvalide,
@@ -117,7 +117,6 @@ namespace TransactionNS
         #endregion
 
         #region Propriétés
-
 
         public int Id
         {
@@ -365,6 +364,10 @@ namespace TransactionNS
         public Transaction(string nom, string prenom, string adresse, string codePostal, string telephone,
                            string type, string annee, string marque, string modele, DateTime dateLivraison, decimal prix)
         {
+            InitMessagesErreurs();
+            InitMarques();
+            InitModel();
+            InitPrix();
             this.nom = nom;
             this.prenom = prenom;
             this.adresse = adresse;
@@ -376,9 +379,6 @@ namespace TransactionNS
             this.marque = marque;
             this.modele = modele;
             this.prix = prix;
-            InitMarques();
-            InitModel();
-            InitPrix();
         }
 
         #endregion
@@ -458,7 +458,7 @@ namespace TransactionNS
         /// Enregistrer la transaction avec des paramètres
         /// </summary>
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
-                                string type, string modele, DateTime dateLivraison, decimal prix)
+                                string type, string modele, DateTime dateLivraison, decimal prix, string marque)
         {
             this.Nom = nom;
             this.Prenom = prenom;
@@ -468,9 +468,11 @@ namespace TransactionNS
             this.Type = type;
             this.Modele = modele;
             this.DateLivraison = dateLivraison;
+            this.Marque = marque;
             this.Prix = prix;
 
             Enregistrer();
+            
         }
 
         #endregion

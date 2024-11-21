@@ -261,6 +261,7 @@
             this.dateLivraisonDateTimePicker.Name = "dateLivraisonDateTimePicker";
             this.dateLivraisonDateTimePicker.Size = new System.Drawing.Size(298, 26);
             this.dateLivraisonDateTimePicker.TabIndex = 27;
+            this.dateLivraisonDateTimePicker.Validating += new System.ComponentModel.CancelEventHandler(this.DateLivrasionValidating);
             // 
             // dateLivraisonLabel
             // 
@@ -346,8 +347,7 @@
             this.aideToolStripMenuItem});
             this.transactionsMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.transactionsMenuStrip.Name = "transactionsMenuStrip";
-            this.transactionsMenuStrip.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
-            this.transactionsMenuStrip.Size = new System.Drawing.Size(1293, 36);
+            this.transactionsMenuStrip.Size = new System.Drawing.Size(1293, 33);
             this.transactionsMenuStrip.TabIndex = 26;
             this.transactionsMenuStrip.Text = "menuStrip1";
             // 
@@ -357,7 +357,7 @@
             this.enregistrerToolStripMenuItem,
             this.quitterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 32);
+            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.fichierToolStripMenuItem.Text = "&Fichier";
             // 
             // enregistrerToolStripMenuItem
@@ -382,7 +382,7 @@
             this.aideToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aproposDeToolStripMenuItem});
             this.aideToolStripMenuItem.Name = "aideToolStripMenuItem";
-            this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 32);
+            this.aideToolStripMenuItem.Size = new System.Drawing.Size(64, 29);
             this.aideToolStripMenuItem.Text = "&Aide";
             // 
             // aproposDeToolStripMenuItem

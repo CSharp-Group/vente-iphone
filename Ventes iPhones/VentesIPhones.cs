@@ -154,23 +154,27 @@ namespace VentesIPhones
             //oTrans.DateLivraison = DateTime.Now;
             //Console.WriteLine(Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency));
             //oTrans.Prix = Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency);
-            
-
             try
             {
                 oTrans.Enregistrer(nomMaskedTextBox.Text, prenomMaskedTextBox.Text, adresseMaskedTextBox.Text,
-                    codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text, 
-                    modelComboBox.Text, DateTime.Parse(dateLivraisonDateTimePicker.Text), Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency));
+                    codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text,
+                    modelComboBox.Text, DateTime.Parse(dateLivraisonDateTimePicker.Text), Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency),
+                    marquesComboBox.Text);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
         }
 
-        private void DateLivrasionValidating()
+        private void DateLivrasionValidating(object sender, CancelEventArgs e)
         {
-           
+            DateTime date;
+
+            if (DateTime.TryParse(dateLivraisonDateTimePicker.Text, out date))
+                dateLivraisonDateTimePicker.Text = date.ToLongDateString();
+            else
+                dateLivraisonDateTimePicker.Text = DateTime.Now.ToLongDateString();
         }
     }
 }
