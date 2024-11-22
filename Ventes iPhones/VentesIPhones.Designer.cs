@@ -69,6 +69,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.backgroundLabel = new System.Windows.Forms.Label();
+            this.datePaiementLabel = new System.Windows.Forms.Label();
+            this.paiementDuLabel = new System.Windows.Forms.Label();
             this.clientGroupBox.SuspendLayout();
             this.transactionGroupBox.SuspendLayout();
             this.transactionsMenuStrip.SuspendLayout();
@@ -96,7 +98,7 @@
             this.clientGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.clientGroupBox.Name = "clientGroupBox";
             this.clientGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.clientGroupBox.Size = new System.Drawing.Size(621, 451);
+            this.clientGroupBox.Size = new System.Drawing.Size(621, 460);
             this.clientGroupBox.TabIndex = 24;
             this.clientGroupBox.TabStop = false;
             this.clientGroupBox.Text = "Client:";
@@ -237,6 +239,8 @@
             // transactionGroupBox
             // 
             this.transactionGroupBox.BackColor = System.Drawing.Color.White;
+            this.transactionGroupBox.Controls.Add(this.paiementDuLabel);
+            this.transactionGroupBox.Controls.Add(this.datePaiementLabel);
             this.transactionGroupBox.Controls.Add(this.dateLivraisonDateTimePicker);
             this.transactionGroupBox.Controls.Add(this.dateLivraisonLabel);
             this.transactionGroupBox.Controls.Add(this.prixLabel);
@@ -249,7 +253,7 @@
             this.transactionGroupBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.transactionGroupBox.Name = "transactionGroupBox";
             this.transactionGroupBox.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.transactionGroupBox.Size = new System.Drawing.Size(552, 303);
+            this.transactionGroupBox.Size = new System.Drawing.Size(552, 333);
             this.transactionGroupBox.TabIndex = 25;
             this.transactionGroupBox.TabStop = false;
             this.transactionGroupBox.Text = "Transaction:";
@@ -393,7 +397,7 @@
             // 
             // enregistrerButton
             // 
-            this.enregistrerButton.Location = new System.Drawing.Point(686, 742);
+            this.enregistrerButton.Location = new System.Drawing.Point(686, 751);
             this.enregistrerButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.enregistrerButton.Name = "enregistrerButton";
             this.enregistrerButton.Size = new System.Drawing.Size(238, 117);
@@ -404,7 +408,7 @@
             // 
             // quitterButton
             // 
-            this.quitterButton.Location = new System.Drawing.Point(999, 742);
+            this.quitterButton.Location = new System.Drawing.Point(1000, 749);
             this.quitterButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.quitterButton.Name = "quitterButton";
             this.quitterButton.Size = new System.Drawing.Size(238, 117);
@@ -465,6 +469,27 @@
             this.backgroundLabel.Name = "backgroundLabel";
             this.backgroundLabel.Size = new System.Drawing.Size(1198, 358);
             this.backgroundLabel.TabIndex = 33;
+            // 
+            // datePaiementLabel
+            // 
+            this.datePaiementLabel.AutoSize = true;
+            this.datePaiementLabel.Location = new System.Drawing.Point(40, 290);
+            this.datePaiementLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.datePaiementLabel.Name = "datePaiementLabel";
+            this.datePaiementLabel.Size = new System.Drawing.Size(122, 20);
+            this.datePaiementLabel.TabIndex = 28;
+            this.datePaiementLabel.Text = "Paiement du le :";
+            // 
+            // paiementDuLabel
+            // 
+            this.paiementDuLabel.BackColor = System.Drawing.Color.White;
+            this.paiementDuLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.paiementDuLabel.Location = new System.Drawing.Point(212, 283);
+            this.paiementDuLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.paiementDuLabel.Name = "paiementDuLabel";
+            this.paiementDuLabel.Size = new System.Drawing.Size(299, 34);
+            this.paiementDuLabel.TabIndex = 29;
+            this.paiementDuLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // VentesIPhones
             // 
@@ -537,6 +562,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label backgroundLabel;
+        private System.Windows.Forms.Label paiementDuLabel;
+        private System.Windows.Forms.Label datePaiementLabel;
     }
 }
 

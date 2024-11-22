@@ -16,7 +16,7 @@ namespace TransactionNS
     {
         #region Declaration des champs prives
 
-        private DateTime datePaiement;
+        public DateTime datePaiement;
 
         #endregion
 

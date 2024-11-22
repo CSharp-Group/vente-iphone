@@ -150,6 +150,8 @@ namespace VentesIPhones
                     codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text,
                     modelComboBox.Text, DateTime.Parse(dateLivraisonDateTimePicker.Text), Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency),
                     marquesComboBox.Text);
+
+                paiementDuLabel.Text = oTrans.datePaiement.ToShortDateString();
             }
             catch (Exception ex)
             {
