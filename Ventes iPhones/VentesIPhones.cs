@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -143,17 +143,7 @@ namespace VentesIPhones
         {
             ValidateChildren();
             Transaction oTrans = new Transaction();
-
-            //oTrans.Nom = nomMaskedTextBox.Text;
-            //oTrans.Prenom = prenomMaskedTextBox.Text;
-            //oTrans.Adresse = adresseMaskedTextBox.Text;
-            //oTrans.CodePostal = codePostalMaskedTextBox.Text;
-            //oTrans.Telephone = telephoneMaskedTextBox.Text;
-            //oTrans.Type = typesComboBox.SelectedItem.ToString();
-            //oTrans.Modele = modelComboBox.SelectedItem.ToString();
-            //oTrans.DateLivraison = DateTime.Now;
-            //Console.WriteLine(Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency));
-            //oTrans.Prix = Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency);
+            
             try
             {
                 oTrans.Enregistrer(nomMaskedTextBox.Text, prenomMaskedTextBox.Text, adresseMaskedTextBox.Text,

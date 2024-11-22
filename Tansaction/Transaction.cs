@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.Mime;
 using System.Reflection;
 
@@ -460,6 +460,7 @@ namespace TransactionNS
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
                                 string type, string modele, DateTime dateLivraison, decimal prix, string marque)
         {
+            Console.WriteLine(prix);
             this.Nom = nom;
             this.Prenom = prenom;
             this.Adresse = adresse;
