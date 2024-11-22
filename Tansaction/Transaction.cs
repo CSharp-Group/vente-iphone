@@ -22,7 +22,7 @@ namespace TransactionNS
 
         #region Declarations des enumerations
 
-        private enum CodeErreurs
+        public enum CodeErreurs
         {
             nomObligatoire,
            prenomObligatoire,
