@@ -171,7 +171,7 @@ namespace TransactionNS
 
                     for (int ran = 0; ran <= tMarques.Length - 1; ran++)
                         for (int col = 0; col <= tModel.Length - 1; col++)
-                            tPrix[rangee, colonne] = decimal.Parse(sr.ReadLine(), CultureInfo.CreateSpecificCulture("en-CA"));
+                            tPrix[ran, col] = decimal.Parse(sr.ReadLine(), CultureInfo.CreateSpecificCulture("en-CA"));
 
                     //Array.Resize(ref tPrix, rangee, colonne);   
 
