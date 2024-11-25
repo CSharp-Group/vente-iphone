@@ -70,6 +70,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Data\Annees.data" />
+    <None Include="Data\Marques.data" />
+    <None Include="Data\Modeles.data" />
+    <None Include="Data\Prix.data" />
+    <None Include="Data\Types.data" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
