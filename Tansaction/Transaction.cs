@@ -480,10 +480,7 @@ namespace TransactionNS
         /// Enregistrer la transaction avec des paramètres
         /// </summary>
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
-                                string type,string marque, string modele, DateTime dateLivraison, decimal prix,
-                                 string codePostalPrinc, string telephonePrinc, string typePrinc,
-                                string modelePrinc, DateTime dateLivraisonPrinc, string marquePrinc,
-                                 string caracteristiquePrinc, decimal prixPrinc)
+                                string type,string marque, string modele, DateTime dateLivraison, decimal prix)
         {
 
 
