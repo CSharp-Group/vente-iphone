@@ -52,7 +52,7 @@ namespace VentesIPhones
                 anneesComboBox.SelectedIndex = 0;
 
                 marquesComboBox.Items.AddRange(oTrans.GetMarques());
-                modelComboBox.Items.AddRange(oTrans.getModel());
+                modelComboBox.Items.AddRange(oTrans.GetModel());
 
                 marquesComboBox.SelectedIndex = 0;
                 modelComboBox.SelectedIndex = 0;
