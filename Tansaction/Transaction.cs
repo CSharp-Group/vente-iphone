@@ -1,6 +1,8 @@
 using System;
 using System.Net.Mime;
 using System.Reflection;
+using System.Text.RegularExpressions;
+
 
 namespace TransactionNS
 {
@@ -17,6 +19,12 @@ namespace TransactionNS
         #region Declaration des champs prives
 
         private DateTime datePaiement;
+
+        private const string CODE_POSTAL_CANADIEN_PATTERN_String = @"[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]";
+
+     
+        private const string TELEPHONE_CANADIEN_PATTERN_String = "^(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$";
+
 
         #endregion
 
@@ -36,7 +44,7 @@ namespace TransactionNS
             marqueInvalide,
             marqueObligatoire,
             dateInvalide,
-            telephoneObligatoir,
+            telephoneObligatoire,
             telephoneInvalide,
             modelInvalide,
             modelObligatoire,
@@ -44,10 +52,14 @@ namespace TransactionNS
             typeInvalide
         }
 
+
         private string[] tMessagesErrurs;
+
+
 
         private void InitMessagesErreurs()
         {
+            tMessagesErrurs = new string[Enum.GetValues(typeof(CodeErreurs)).Length];// initialisation
             tMessagesErrurs[(int)CodeErreurs.nomObligatoire] = "Le nom est obligatoire.";
             tMessagesErrurs[(int)CodeErreurs.prenomObligatoire] = "Le prenom est obligatoire.";
             tMessagesErrurs[(int)CodeErreurs.addressObligatoire] = "L'adresse est obligatoire.";
@@ -56,14 +68,14 @@ namespace TransactionNS
             tMessagesErrurs[(int)CodeErreurs.codePostalInvalide] = "Le code postal est invalide.";
             tMessagesErrurs[(int)CodeErreurs.marqueInvalide] = "La marque est invalide";
             tMessagesErrurs[(int)CodeErreurs.marqueObligatoire] = "La marque est obligatoire";
-            tMessagesErrurs[(int)CodeErreurs.modelInvalide] = "La date de livraison est invalide.";
-            tMessagesErrurs[(int)CodeErreurs.modelObligatoire] = "La marque est obligatoire";
+            tMessagesErrurs[(int)CodeErreurs.modelInvalide] = "Le modèle est invalide.";
+            tMessagesErrurs[(int)CodeErreurs.modelObligatoire] = "Le modèle est obligatoire.";
             tMessagesErrurs[(int)CodeErreurs.dateLivraisonInvalide] = "La date de livraison est invalide.";
             tMessagesErrurs[(int)CodeErreurs.prixInvalide] = "Prix invalide";
             tMessagesErrurs[(int)CodeErreurs.erreurIndeterminee] = "Erreur indeterminee";
             tMessagesErrurs[(int)CodeErreurs.dateInvalide] = "La date doit se situer dans les 15 jours precedant ou suivant de la date courante";
-            tMessagesErrurs[(int)CodeErreurs.telephoneInvalide] = "Numero de telephone invalide";
-            tMessagesErrurs[(int)CodeErreurs.telephoneObligatoir] = "Le numero de telephone est obligatoire";
+            tMessagesErrurs[(int)CodeErreurs.telephoneInvalide] = "Numéro de téléphone invalide.";
+            tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire] = "Le numéro de téléphone est obligatoire.";
             tMessagesErrurs[(int)CodeErreurs.typeInvalide] = "Type invalide";
             tMessagesErrurs[(int)CodeErreurs.typeObligatoire] = "Le type est obligatoire";
 
@@ -77,7 +89,7 @@ namespace TransactionNS
         private string[] tModel;
         private decimal[,] tPrix;
 
-        private int id;
+        private static int id = 1;
         private string nom;
         private string prenom;
         private string adresse;
@@ -89,7 +101,8 @@ namespace TransactionNS
         private string marque;
         private string modele;
         private decimal prix;
-
+        //private string[] tMessagesErrurs;
+       // private string[] tMessagesErrurs = new string[Enum.GetValues(typeof(CodeErreurs)).Length];
         #endregion
 
         #region Initialisation des tableaux
@@ -198,7 +211,6 @@ namespace TransactionNS
                     throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.anneeObligatoire]);
             }
         }
-
         public string CodePostal
         {
             get { return codePostal; }
@@ -206,36 +218,44 @@ namespace TransactionNS
             {
                 if (value != null)
                 {
-                    value = value.Trim();
-
-                    if (value != string.Empty)
-                        codePostal = value;
+                    if (Regex.IsMatch(value, CODE_POSTAL_CANADIEN_PATTERN_String))
+                    {
+                        codePostal = value.Trim();
+                    }
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.codePostalInvalide]);
+                    {
+                        throw new FormatException(tMessagesErrurs[(int)CodeErreurs.codePostalInvalide]);
+                    }
                 }
                 else
+                {
                     throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.codePostalObligatoire]);
+                }
             }
         }
 
         public string Telephone
         {
-            get { return telephone; }
-            set
-            {
-                if (value != null)
-                {
-                    value = value.Trim();
-
-                    if (value != string.Empty)
-                        telephone = value;
+                get { return telephone; }
+                set
+                 {
+                    if (value != null)
+                    {
+                        if (value != String.Empty)
+                        {
+                            if (Regex.IsMatch(value, TELEPHONE_CANADIEN_PATTERN_String))
+                                telephone = value.Trim();
+                            else
+                                throw new FormatException(tMessagesErrurs[(int)CodeErreurs.telephoneInvalide]);
+                        }
+                        else
+                            throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire]);
+                    }
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.telephoneInvalide]);
+                        throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire]);
                 }
-                else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoir]);
-            }
         }
+
 
         public string Type
         {
@@ -344,6 +364,7 @@ namespace TransactionNS
             InitMarques();
             InitModel();
             InitPrix();
+            InitMessagesErreurs();
         }
 
         /// <summary>
@@ -375,9 +396,8 @@ namespace TransactionNS
             this.marque = marque;
             this.modele = modele;
             this.prix = prix;
-            InitMarques();
-            InitModel();
-            InitPrix();
+
+            Enregistrer();
         }
 
         #endregion
@@ -393,7 +413,7 @@ namespace TransactionNS
 
         #region Models
 
-        public string[] getModel()
+        public string[] GetModel()
         {
             return tModel;
         }
@@ -445,6 +465,9 @@ namespace TransactionNS
         /// </summary>
         public void Enregistrer()
         {
+            id += 1;
+
+            Console.WriteLine($"Transaction #{id} de {Nom} {Prenom}:");
             Console.WriteLine($"Transaction de {Nom} {Prenom}:");
             Console.WriteLine($"Adresse: {Adresse}, {CodePostal}");
             Console.WriteLine($"Téléphone: {Telephone}");
@@ -457,8 +480,14 @@ namespace TransactionNS
         /// Enregistrer la transaction avec des paramètres
         /// </summary>
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
-                                string type,string marque, string modele, DateTime dateLivraison, decimal prix)
+                                string type,string marque, string modele, DateTime dateLivraison, decimal prix,
+                                 string codePostalPrinc, string telephonePrinc, string typePrinc,
+                                string modelePrinc, DateTime dateLivraisonPrinc, string marquePrinc,
+                                 string caracteristiquePrinc, decimal prixPrinc)
         {
+
+
+
             Console.WriteLine(prix);
             this.Nom = nom;
             this.Prenom = prenom;
@@ -470,7 +499,9 @@ namespace TransactionNS
             this.Marque = marque;
             this.DateLivraison = dateLivraison;
             this.Prix = prix;
-
+             InitMarques();
+            InitModel();
+            InitPrix();
             Enregistrer();
         }
 
