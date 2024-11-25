@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Globalization;
 using System.Net.Mime;
 using System.Reflection;
 using System.Security.AccessControl;
@@ -20,6 +21,8 @@ namespace TransactionNS
 
         public DateTime datePaiement;
         public string[] tMarques = new string[20];
+        private string[] tModel = new string[20];
+        public decimal[,] tPrix = new decimal[20, 20];
 
         #endregion
 
@@ -76,8 +79,7 @@ namespace TransactionNS
 
         #region Declaration des tableaux
 
-        private string[] tModel;
-        private decimal[,] tPrix;
+        
 
         private int id;
         private string nom;
@@ -125,24 +127,68 @@ namespace TransactionNS
             {
                 throw new Exception("Erreur indéterminée dans la lecture des prix.");
             }
-            
-
-            
         }
 
         private void InitModel()
         {
-            
+            try
+            {
+                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Modeles.data"))
+                {
+                    string ligne = sr.ReadLine();
+                    int nombre = int.Parse(ligne);
+
+                    Array.Resize(ref tModel, nombre);
+
+                    for (int i = 0; i < nombre; i++)
+                    {
+                        tModel[i] = sr.ReadLine();
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+            }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erreur indéterminée dans la lecture des prix.");
+            }
         }
 
         private void InitPrix()
         {
-            tPrix = new decimal[3, 3]
+            try
             {
-                { 989.99M, 1109.99M, 1301.99M },
-                { 1087.99M, 1233.99M, 1409.99M },
-                { 1100.99M, 1301.99M, 1498.99M }
-            };
+                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Prix.data"))
+                {
+                    int rangee = tMarques.Length - 1;
+                    int colonne = tModel.Length - 1;
+
+                    for (int ran = 0; ran <= tMarques.Length - 1; ran++)
+                        for (int col = 0; col <= tModel.Length - 1; col++)
+                            tPrix[rangee, colonne] = decimal.Parse(sr.ReadLine(), CultureInfo.CreateSpecificCulture("en-CA"));
+
+                    //Array.Resize(ref tPrix, rangee, colonne);   
+
+                }
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+            }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erreur indéterminée dans la lecture des prix.");
+            }
         }
 
         #endregion

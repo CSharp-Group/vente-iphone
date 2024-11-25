@@ -46,10 +46,10 @@ namespace VentesIPhones
             try
             {
                 typesComboBox.Items.AddRange(oTypes.GetTypes((Types.CodeTypes)0));
-                anneesComboBox.Items.AddRange(oTypes.GetTypes((Types.CodeTypes)1));
+                //anneesComboBox.Items.AddRange(oTypes.GetTypes((Types.CodeTypes)1));
 
                 typesComboBox.SelectedIndex = 0;
-                anneesComboBox.SelectedIndex = 0;
+                //anneesComboBox.SelectedIndex = 0;
 
                 marquesComboBox.Items.AddRange(oTrans.GetMarques());
                 modelComboBox.Items.AddRange(oTrans.getModel());
