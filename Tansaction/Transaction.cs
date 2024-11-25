@@ -1,6 +1,8 @@
 using System;
+using System.IO;
 using System.Net.Mime;
 using System.Reflection;
+using System.Security.AccessControl;
 
 namespace TransactionNS
 {
@@ -17,6 +19,7 @@ namespace TransactionNS
         #region Declaration des champs prives
 
         public DateTime datePaiement;
+        public string[] tMarques = new string[20];
 
         #endregion
 
@@ -25,7 +28,7 @@ namespace TransactionNS
         public enum CodeErreurs
         {
             nomObligatoire,
-           prenomObligatoire,
+            prenomObligatoire,
             addressObligatoire,
             codePostalObligatoire,
             codePostalInvalide,
@@ -73,7 +76,6 @@ namespace TransactionNS
 
         #region Declaration des tableaux
 
-        private string[] tMarques;
         private string[] tModel;
         private decimal[,] tPrix;
 
@@ -96,12 +98,41 @@ namespace TransactionNS
 
         private void InitMarques()
         {
-            tMarques = new string[3] { "iPhone 14", "iPhone 15", "iPhone 16" };
+            try
+            {
+                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Marques.data"))
+                {
+                    string ligne = sr.ReadLine();
+                    int nombre = int.Parse(ligne);
+
+                    Array.Resize(ref tMarques, nombre);   
+
+                    for (int i = 0; i < nombre; i++)
+                    {
+                        tMarques[i] = sr.ReadLine();
+                    }
+                }
+            }
+            catch (FormatException)
+            {
+                throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+            }
+            catch (FileNotFoundException)
+            {
+                throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erreur indéterminée dans la lecture des prix.");
+            }
+            
+
+            
         }
 
         private void InitModel()
         {
-            tModel = new string[3] { "Regular", "Pro", "Pro Max" };
+            
         }
 
         private void InitPrix()

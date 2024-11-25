@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,18 +33,53 @@ namespace TypesNS
 
         public Types()
         {
-            InitTypes();
             InitAnnes();
+            InitTypes();
         }
 
         #endregion
 
         #region Initialisation
 
-        public void InitTypes()
+        private void InitAnnes()
         {
 
             using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Annees.data"))
+            {
+                try
+                {
+                    string line = sr.ReadLine();
+                    int i = 0;
+
+                    while (line != null)
+                    {
+                        tAnnees[i] = line;
+                        line = sr.ReadLine();
+                        i++;
+                    }
+
+                    Array.Resize(ref tTypes, i);
+                }
+                catch (FormatException)
+                {
+                    throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+                }
+                catch (FileNotFoundException)
+                {
+                    throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Erreur indéterminée dans la lecture des prix.");
+                }
+
+            }
+        }
+
+        private void InitTypes()
+        {
+
+            using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Types.data"))
             {
                 try
                 {
@@ -57,21 +94,25 @@ namespace TypesNS
                     }
 
                     Array.Resize(ref tTypes, i);
-                } 
-                catch (Exception e) 
-                {
-
                 }
-             
-                
+                catch (FormatException)
+                {
+                    throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+                }
+                catch (FileNotFoundException)
+                {
+                    throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+                }
+                catch (Exception)
+                {
+                    throw new Exception("Erreur indéterminée dans la lecture des prix.");
+                }
+
             }
 
         }
 
-        public void InitAnnes()
-        {
 
-        }
 
         //public void InitTypes()
         //{
