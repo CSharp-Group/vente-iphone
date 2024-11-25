@@ -18,6 +18,8 @@ namespace TransactionNS
     {
         #region Declaration des champs prives
 
+        public static int numTransaction = 0;
+
         private DateTime datePaiement;
 
         private const string CODE_POSTAL_CANADIEN_PATTERN_String = @"[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]";
@@ -89,7 +91,6 @@ namespace TransactionNS
         private string[] tModel;
         private decimal[,] tPrix;
 
-        private static int id = 1;
         private string nom;
         private string prenom;
         private string adresse;
@@ -131,10 +132,6 @@ namespace TransactionNS
 
         #region Propriétés
 
-        public int Id
-        {
-            get { return id; }
-        }
 
         public string Nom
         {
@@ -464,10 +461,10 @@ namespace TransactionNS
         /// Enregistrer la transaction (affichage des informations)
         /// </summary>
         public void Enregistrer()
-        {
-            id += 1;
+        { 
+            numTransaction++;
 
-            Console.WriteLine($"Transaction #{id} de {Nom} {Prenom}:");
+            Console.WriteLine($"Transaction #{numTransaction}");
             Console.WriteLine($"Transaction de {Nom} {Prenom}:");
             Console.WriteLine($"Adresse: {Adresse}, {CodePostal}");
             Console.WriteLine($"Téléphone: {Telephone}");
@@ -480,13 +477,8 @@ namespace TransactionNS
         /// Enregistrer la transaction avec des paramètres
         /// </summary>
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
-                                string type,string marque, string modele, DateTime dateLivraison, decimal prix,
-                                 string codePostalPrinc, string telephonePrinc, string typePrinc,
-                                string modelePrinc, DateTime dateLivraisonPrinc, string marquePrinc,
-                                 string caracteristiquePrinc, decimal prixPrinc)
+                                string type,string marque, string modele, DateTime dateLivraison, decimal prix)
         {
-
-
 
             Console.WriteLine(prix);
             this.Nom = nom;
@@ -499,7 +491,7 @@ namespace TransactionNS
             this.Marque = marque;
             this.DateLivraison = dateLivraison;
             this.Prix = prix;
-             InitMarques();
+            InitMarques();
             InitModel();
             InitPrix();
             Enregistrer();
