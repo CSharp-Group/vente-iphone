@@ -44,7 +44,7 @@ namespace TypesNS
         private void InitAnnes()
         {
 
-            using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Annees.data"))
+            using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Annees.data"))
             {
                 try
                 {
@@ -79,7 +79,7 @@ namespace TypesNS
         private void InitTypes()
         {
 
-            using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Types.data"))
+            using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Types.data"))
             {
                 try
                 {

@@ -102,7 +102,7 @@ namespace TransactionNS
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Marques.data"))
+                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Marques.data"))
                 {
                     string ligne = sr.ReadLine();
                     int nombre = int.Parse(ligne);
@@ -133,7 +133,7 @@ namespace TransactionNS
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Modeles.data"))
+                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Modeles.data"))
                 {
                     string ligne = sr.ReadLine();
                     int nombre = int.Parse(ligne);
@@ -164,7 +164,7 @@ namespace TransactionNS
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\source\\repos\\Annee2\\PROG1236 - C#\\Ventes iPhones\\Ventes iPhones\\Data\\Prix.data"))
+                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Prix.data"))
                 {
                     int rangee = tMarques.Length - 1;
                     int colonne = tModel.Length - 1;
