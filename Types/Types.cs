@@ -58,7 +58,8 @@ namespace TypesNS
                         i++;
                     }
 
-                    Array.Resize(ref tTypes, i);
+                    Array.Resize(ref tAnnees, i);
+
                 }
                 catch (FormatException)
                 {
@@ -94,6 +95,10 @@ namespace TypesNS
                     }
 
                     Array.Resize(ref tTypes, i);
+
+                    Console.WriteLine(tTypes[0]);
+                    Console.WriteLine(tTypes[1]);
+
                 }
                 catch (FormatException)
                 {
