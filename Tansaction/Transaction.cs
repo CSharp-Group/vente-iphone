@@ -40,7 +40,7 @@ namespace TransactionNS
             marqueInvalide,
             marqueObligatoire,
             dateInvalide,
-            telephoneObligatoir,
+            telephoneObligatoire,
             telephoneInvalide,
             modelInvalide,
             modelObligatoire,
@@ -52,6 +52,7 @@ namespace TransactionNS
 
         private void InitMessagesErreurs()
         {
+            tMessagesErrurs = new string[Enum.GetValues(typeof(CodeErreurs)).Length];// initialisation
             tMessagesErrurs[(int)CodeErreurs.nomObligatoire] = "Le nom est obligatoire.";
             tMessagesErrurs[(int)CodeErreurs.prenomObligatoire] = "Le prenom est obligatoire.";
             tMessagesErrurs[(int)CodeErreurs.addressObligatoire] = "L'adresse est obligatoire.";
@@ -60,14 +61,14 @@ namespace TransactionNS
             tMessagesErrurs[(int)CodeErreurs.codePostalInvalide] = "Le code postal est invalide.";
             tMessagesErrurs[(int)CodeErreurs.marqueInvalide] = "La marque est invalide";
             tMessagesErrurs[(int)CodeErreurs.marqueObligatoire] = "La marque est obligatoire";
-            tMessagesErrurs[(int)CodeErreurs.modelInvalide] = "La date de livraison est invalide.";
-            tMessagesErrurs[(int)CodeErreurs.modelObligatoire] = "La marque est obligatoire";
+            tMessagesErrurs[(int)CodeErreurs.modelInvalide] = "Le modèle est invalide.";
+            tMessagesErrurs[(int)CodeErreurs.modelObligatoire] = "Le modèle est obligatoire.";
             tMessagesErrurs[(int)CodeErreurs.dateLivraisonInvalide] = "La date de livraison est invalide.";
             tMessagesErrurs[(int)CodeErreurs.prixInvalide] = "Prix invalide";
             tMessagesErrurs[(int)CodeErreurs.erreurIndeterminee] = "Erreur indeterminee";
             tMessagesErrurs[(int)CodeErreurs.dateInvalide] = "La date doit se situer dans les 15 jours precedant ou suivant de la date courante";
             tMessagesErrurs[(int)CodeErreurs.telephoneInvalide] = "Numero de telephone invalide";
-            tMessagesErrurs[(int)CodeErreurs.telephoneObligatoir] = "Le numero de telephone est obligatoire";
+            tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire] = "Le numero de telephone est obligatoire";
             tMessagesErrurs[(int)CodeErreurs.typeInvalide] = "Type invalide";
             tMessagesErrurs[(int)CodeErreurs.typeObligatoire] = "Le type est obligatoire";
 
@@ -77,9 +78,9 @@ namespace TransactionNS
 
         #region Declaration des tableaux
 
-        public string[] tMarques = new string[20];
+        private string[] tMarques = new string[20];
         private string[] tModel = new string[20];
-        public decimal[,] tPrix = new decimal[20, 20];
+        private decimal[,] tPrix = new decimal[20, 20];
 
         private int id;
         private string nom;
@@ -173,7 +174,7 @@ namespace TransactionNS
                         for (int col = 0; col <= tModel.Length - 1; col++)
                             tPrix[ran, col] = decimal.Parse(sr.ReadLine(), CultureInfo.CreateSpecificCulture("en-CA"));
 
-                    //Array.Resize(ref tPrix, rangee, colonne);   
+                    ResizeArray(tPrix, rangee, colonne);   
 
                 }
             }
@@ -189,6 +190,21 @@ namespace TransactionNS
             {
                 throw new Exception("Erreur indéterminée dans la lecture des prix.");
             }
+        }
+
+        #endregion
+
+        #region ResizeArray
+
+        T[,] ResizeArray<T>(T[,] original, int rows, int cols)
+        {
+            var newArray = new T[rows, cols];
+            int minRows = Math.Min(rows, original.GetLength(0));
+            int minCols = Math.Min(cols, original.GetLength(1));
+            for (int i = 0; i < minRows; i++)
+                for (int j = 0; j < minCols; j++)
+                    newArray[i, j] = original[i, j];
+            return newArray;
         }
 
         #endregion
@@ -310,7 +326,7 @@ namespace TransactionNS
                         throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.telephoneInvalide]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoir]);
+                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire]);
             }
         }
 
