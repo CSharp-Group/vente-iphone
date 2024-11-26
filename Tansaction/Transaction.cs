@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Net.Mime;
 using System.Reflection;
 using System.Security.AccessControl;
+using System.Text.RegularExpressions;
 
 namespace TransactionNS
 {
@@ -20,7 +21,9 @@ namespace TransactionNS
         #region Declaration des champs prives
 
         public DateTime datePaiement;
-
+        public static int numTransaction = 0;
+        private const string CODE_POSTAL_CANADIEN_PATTERN_String = @"[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]";
+        private const string TELEPHONE_CANADIEN_PATTERN_String = "^(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$";
 
         #endregion
 
@@ -299,15 +302,19 @@ namespace TransactionNS
             {
                 if (value != null)
                 {
-                    value = value.Trim();
-
-                    if (value != string.Empty)
-                        codePostal = value;
+                    if (Regex.IsMatch(value, CODE_POSTAL_CANADIEN_PATTERN_String))
+                    {
+                        codePostal = value.Trim();
+                    }
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.codePostalInvalide]);
+                    {
+                        throw new FormatException(tMessagesErrurs[(int)CodeErreurs.codePostalInvalide]);
+                    }
                 }
                 else
+                {
                     throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.codePostalObligatoire]);
+                }
             }
         }
 
@@ -318,12 +325,15 @@ namespace TransactionNS
             {
                 if (value != null)
                 {
-                    value = value.Trim();
-
-                    if (value != string.Empty)
-                        telephone = value;
+                    if (value != String.Empty)
+                    {
+                        if (Regex.IsMatch(value, TELEPHONE_CANADIEN_PATTERN_String))
+                            telephone = value.Trim();
+                        else
+                            throw new FormatException(tMessagesErrurs[(int)CodeErreurs.telephoneInvalide]);
+                    }
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.telephoneInvalide]);
+                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire]);
                 }
                 else
                     throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire]);
@@ -539,6 +549,9 @@ namespace TransactionNS
         /// </summary>
         public void Enregistrer()
         {
+            numTransaction++;
+
+            Console.WriteLine($"Transaction #{numTransaction}");
             Console.WriteLine($"Transaction de {Nom} {Prenom}:");
             Console.WriteLine($"Adresse: {Adresse}, {CodePostal}");
             Console.WriteLine($"Téléphone: {Telephone}");
