@@ -143,7 +143,9 @@ namespace VentesIPhones
         {
             ValidateChildren();
             Transaction oTrans = new Transaction();
-            
+
+            FormatTextFields();
+
             try
             {
                 oTrans.Enregistrer(nomMaskedTextBox.Text, prenomMaskedTextBox.Text, adresseMaskedTextBox.Text,
@@ -167,6 +169,57 @@ namespace VentesIPhones
                 dateLivraisonDateTimePicker.Text = date.ToLongDateString();
             else
                 dateLivraisonDateTimePicker.Text = DateTime.Now.ToLongDateString();
+        }
+
+        /// <summary>
+        /// Formate les champs de texte pour garantir une présentation standardisée.
+        /// </summary>
+        private void FormatTextFields()
+        {
+            // Check si les field sont vides
+            var textFields = new[]
+            {
+                prenomMaskedTextBox.Text,
+                nomMaskedTextBox.Text,
+                adresseMaskedTextBox.Text,
+                codePostalMaskedTextBox.Text,
+                telephoneMaskedTextBox.Text
+            };
+
+            // si un des champs est vide, on ne fait rien
+            if (!textFields.All(field => !string.IsNullOrWhiteSpace(field)))
+            {
+                return;
+            }
+
+            try
+            {
+                // Trim Whitespace
+                prenomMaskedTextBox.Text = prenomMaskedTextBox.Text.Trim();
+                nomMaskedTextBox.Text = nomMaskedTextBox.Text.Trim();
+                adresseMaskedTextBox.Text = adresseMaskedTextBox.Text.Trim();
+                codePostalMaskedTextBox.Text = codePostalMaskedTextBox.Text.Trim();
+                telephoneMaskedTextBox.Text = telephoneMaskedTextBox.Text.Trim();
+
+                // Format le nom et prenom
+                prenomMaskedTextBox.Text = prenomMaskedTextBox.Text.ToLower();
+                nomMaskedTextBox.Text = nomMaskedTextBox.Text.ToLower();
+                prenomMaskedTextBox.Text = prenomMaskedTextBox.Text.Substring(0, 1).ToUpper() + prenomMaskedTextBox.Text.Substring(1);
+                nomMaskedTextBox.Text = nomMaskedTextBox.Text.Substring(0, 1).ToUpper() + nomMaskedTextBox.Text.Substring(1);
+
+                // Format l'adresse
+                codePostalMaskedTextBox.Text = codePostalMaskedTextBox.Text.ToUpper();
+                codePostalMaskedTextBox.Text = codePostalMaskedTextBox.Text.Replace(" ", "");
+
+                telephoneMaskedTextBox.Text = telephoneMaskedTextBox.Text.Replace("(", "");
+                telephoneMaskedTextBox.Text = telephoneMaskedTextBox.Text.Replace(")", "");
+                telephoneMaskedTextBox.Text = telephoneMaskedTextBox.Text.Replace("-", "");
+                telephoneMaskedTextBox.Text = telephoneMaskedTextBox.Text.Replace(" ", "");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
