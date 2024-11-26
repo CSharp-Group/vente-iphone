@@ -20,9 +20,7 @@ namespace TransactionNS
         #region Declaration des champs prives
 
         public DateTime datePaiement;
-        public string[] tMarques = new string[20];
-        private string[] tModel = new string[20];
-        public decimal[,] tPrix = new decimal[20, 20];
+
 
         #endregion
 
@@ -79,7 +77,9 @@ namespace TransactionNS
 
         #region Declaration des tableaux
 
-        
+        public string[] tMarques = new string[20];
+        private string[] tModel = new string[20];
+        public decimal[,] tPrix = new decimal[20, 20];
 
         private int id;
         private string nom;
@@ -421,6 +421,7 @@ namespace TransactionNS
             InitMarques();
             InitModel();
             InitPrix();
+            InitMessagesErreurs();
         }
 
         /// <summary>
@@ -441,10 +442,7 @@ namespace TransactionNS
         public Transaction(string nom, string prenom, string adresse, string codePostal, string telephone,
                            string type, string annee, string marque, string modele, DateTime dateLivraison, decimal prix)
         {
-            InitMessagesErreurs();
-            InitMarques();
-            InitModel();
-            InitPrix();
+            
             this.nom = nom;
             this.prenom = prenom;
             this.adresse = adresse;
@@ -456,6 +454,8 @@ namespace TransactionNS
             this.marque = marque;
             this.modele = modele;
             this.prix = prix;
+
+            Enregistrer();
         }
 
         #endregion
@@ -548,9 +548,10 @@ namespace TransactionNS
             this.DateLivraison = dateLivraison;
             this.Marque = marque;
             this.Prix = prix;
-
+            InitMarques();
+            InitModel();
+            InitPrix();
             Enregistrer();
-            
         }
 
         #endregion
