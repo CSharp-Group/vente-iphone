@@ -54,31 +54,31 @@ namespace TransactionNS
             fichierInvalide
         }
 
-        private string[] tMessagesErrurs;
+        private string[] tMessagesErreurs;
 
         private void InitMessagesErreurs()
         {
-            tMessagesErrurs = new string[Enum.GetValues(typeof(CodeErreurs)).Length];// initialisation
-            tMessagesErrurs[(int)CodeErreurs.nomObligatoire] = "Le nom est obligatoire.";
-            tMessagesErrurs[(int)CodeErreurs.prenomObligatoire] = "Le prenom est obligatoire.";
-            tMessagesErrurs[(int)CodeErreurs.addressObligatoire] = "L'adresse est obligatoire.";
-            tMessagesErrurs[(int)CodeErreurs.anneeObligatoire] = "L'annee est obligatoire";
-            tMessagesErrurs[(int)CodeErreurs.codePostalObligatoire] = "Le code postal est obligatoire.";
-            tMessagesErrurs[(int)CodeErreurs.codePostalInvalide] = "Le code postal est invalide.";
-            tMessagesErrurs[(int)CodeErreurs.marqueInvalide] = "La marque est invalide";
-            tMessagesErrurs[(int)CodeErreurs.marqueObligatoire] = "La marque est obligatoire";
-            tMessagesErrurs[(int)CodeErreurs.modelInvalide] = "Le modèle est invalide.";
-            tMessagesErrurs[(int)CodeErreurs.modelObligatoire] = "Le modèle est obligatoire.";
-            tMessagesErrurs[(int)CodeErreurs.dateLivraisonInvalide] = "La date de livraison est invalide.";
-            tMessagesErrurs[(int)CodeErreurs.prixInvalide] = "Prix invalide";
-            tMessagesErrurs[(int)CodeErreurs.erreurIndeterminee] = "Erreur indeterminee";
-            tMessagesErrurs[(int)CodeErreurs.dateInvalide] = "La date doit se situer dans les 15 jours precedant ou suivant de la date courante";
-            tMessagesErrurs[(int)CodeErreurs.telephoneInvalide] = "Numero de telephone invalide";
-            tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire] = "Le numero de telephone est obligatoire";
-            tMessagesErrurs[(int)CodeErreurs.typeInvalide] = "Type invalide";
-            tMessagesErrurs[(int)CodeErreurs.typeObligatoire] = "Le type est obligatoire";
-            tMessagesErrurs[(int)CodeErreurs.convertionImpossible] = "Impossible de convertir le prix en valeur réelle.";
-            tMessagesErrurs[(int)CodeErreurs.fichierInvalide] = "Le fichier des prix n’est pas disponible.";
+            tMessagesErreurs = new string[Enum.GetValues(typeof(CodeErreurs)).Length];// initialisation
+            tMessagesErreurs[(int)CodeErreurs.nomObligatoire] = "Le nom est obligatoire.";
+            tMessagesErreurs[(int)CodeErreurs.prenomObligatoire] = "Le prenom est obligatoire.";
+            tMessagesErreurs[(int)CodeErreurs.addressObligatoire] = "L'adresse est obligatoire.";
+            tMessagesErreurs[(int)CodeErreurs.anneeObligatoire] = "L'annee est obligatoire";
+            tMessagesErreurs[(int)CodeErreurs.codePostalObligatoire] = "Le code postal est obligatoire.";
+            tMessagesErreurs[(int)CodeErreurs.codePostalInvalide] = "Le code postal est invalide.";
+            tMessagesErreurs[(int)CodeErreurs.marqueInvalide] = "La marque est invalide";
+            tMessagesErreurs[(int)CodeErreurs.marqueObligatoire] = "La marque est obligatoire";
+            tMessagesErreurs[(int)CodeErreurs.modelInvalide] = "Le modèle est invalide.";
+            tMessagesErreurs[(int)CodeErreurs.modelObligatoire] = "Le modèle est obligatoire.";
+            tMessagesErreurs[(int)CodeErreurs.dateLivraisonInvalide] = "La date de livraison est invalide.";
+            tMessagesErreurs[(int)CodeErreurs.prixInvalide] = "Prix invalide";
+            tMessagesErreurs[(int)CodeErreurs.erreurIndeterminee] = "Erreur indeterminee";
+            tMessagesErreurs[(int)CodeErreurs.dateInvalide] = "La date doit se situer dans les 15 jours precedant ou suivant de la date courante";
+            tMessagesErreurs[(int)CodeErreurs.telephoneInvalide] = "Numero de telephone invalide";
+            tMessagesErreurs[(int)CodeErreurs.telephoneObligatoire] = "Le numero de telephone est obligatoire";
+            tMessagesErreurs[(int)CodeErreurs.typeInvalide] = "Type invalide";
+            tMessagesErreurs[(int)CodeErreurs.typeObligatoire] = "Le type est obligatoire";
+            tMessagesErreurs[(int)CodeErreurs.convertionImpossible] = "Impossible de convertir le prix en valeur réelle.";
+            tMessagesErreurs[(int)CodeErreurs.fichierInvalide] = "Le fichier des prix n’est pas disponible.";
 
 
         }
@@ -112,7 +112,11 @@ namespace TransactionNS
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Marques.data"))
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\.."));
+                string filePath = Path.Combine(projectRoot, "Data", "Marques.data");
+
+                using (StreamReader sr = new StreamReader(filePath))
                 {
                     string ligne = sr.ReadLine();
                     int nombre = int.Parse(ligne);
@@ -127,15 +131,15 @@ namespace TransactionNS
             }
             catch (FormatException)
             {
-                throw new FormatException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
+                throw new FormatException(tMessagesErreurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (FileNotFoundException)
             {
-                throw new FileNotFoundException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
+                throw new FileNotFoundException(tMessagesErreurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (Exception)
             {
-                throw new Exception(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
+                throw new Exception(tMessagesErreurs[(int)CodeErreurs.modelInvalide]);
             }
         }
 
@@ -143,7 +147,11 @@ namespace TransactionNS
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Modeles.data"))
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\.."));
+                string filePath = Path.Combine(projectRoot, "Data", "Modeles.data");
+
+                using (StreamReader sr = new StreamReader(filePath))
                 {
                     string ligne = sr.ReadLine();
                     int nombre = int.Parse(ligne);
@@ -158,15 +166,15 @@ namespace TransactionNS
             }
             catch (FormatException)
             {
-                throw new FormatException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
+                throw new FormatException(tMessagesErreurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (FileNotFoundException)
             {
-                throw new FileNotFoundException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
+                throw new FileNotFoundException(tMessagesErreurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (Exception)
             {
-                throw new Exception(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
+                throw new Exception(tMessagesErreurs[(int)CodeErreurs.modelInvalide]);
             }
         }
 
@@ -174,7 +182,11 @@ namespace TransactionNS
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Prix.data"))
+                string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\.."));
+                string filePath = Path.Combine(projectRoot, "Data", "Prix.data");
+
+                using (StreamReader sr = new StreamReader(filePath))
                 {
                     int rangee = tMarques.Length - 1;
                     int colonne = tModel.Length - 1;
@@ -187,11 +199,11 @@ namespace TransactionNS
             }
             catch (FormatException)
             {
-                throw new FormatException(tMessagesErrurs[(int)CodeErreurs.convertionImpossible]);
+                throw new FormatException(tMessagesErreurs[(int)CodeErreurs.convertionImpossible]);
             }
             catch (FileNotFoundException)
             {
-                throw new FileNotFoundException(tMessagesErrurs[(int)CodeErreurs.fichierInvalide]);
+                throw new FileNotFoundException(tMessagesErreurs[(int)CodeErreurs.fichierInvalide]);
             }
             catch (Exception)
             {
@@ -222,10 +234,10 @@ namespace TransactionNS
                     if (value != string.Empty)
                         nom = value;
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.nomObligatoire]);
+                        throw new ArgumentException(tMessagesErreurs[(int)CodeErreurs.nomObligatoire]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.nomObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.nomObligatoire]);
             }
         }
 
@@ -241,10 +253,10 @@ namespace TransactionNS
                     if (value != string.Empty)
                         prenom = value;
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.prenomObligatoire]);
+                        throw new ArgumentException(tMessagesErreurs[(int)CodeErreurs.prenomObligatoire]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.prenomObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.prenomObligatoire]);
             }
         }
 
@@ -260,10 +272,10 @@ namespace TransactionNS
                     if (value != string.Empty)
                         adresse = value;
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.addressObligatoire]);
+                        throw new ArgumentException(tMessagesErreurs[(int)CodeErreurs.addressObligatoire]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.addressObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.addressObligatoire]);
             }
         }
 
@@ -279,10 +291,10 @@ namespace TransactionNS
                     if (value != string.Empty)
                         annee = value;
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.anneeObligatoire]);
+                        throw new ArgumentException(tMessagesErreurs[(int)CodeErreurs.anneeObligatoire]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.anneeObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.anneeObligatoire]);
             }
         }
 
@@ -299,12 +311,12 @@ namespace TransactionNS
                     }
                     else
                     {
-                        throw new FormatException(tMessagesErrurs[(int)CodeErreurs.codePostalInvalide]);
+                        throw new FormatException(tMessagesErreurs[(int)CodeErreurs.codePostalInvalide]);
                     }
                 }
                 else
                 {
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.codePostalObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.codePostalObligatoire]);
                 }
             }
         }
@@ -321,13 +333,13 @@ namespace TransactionNS
                         if (Regex.IsMatch(value, TELEPHONE_CANADIEN_PATTERN_String))
                             telephone = value.Trim();
                         else
-                            throw new FormatException(tMessagesErrurs[(int)CodeErreurs.telephoneInvalide]);
+                            throw new FormatException(tMessagesErreurs[(int)CodeErreurs.telephoneInvalide]);
                     }
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire]);
+                        throw new ArgumentException(tMessagesErreurs[(int)CodeErreurs.telephoneObligatoire]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.telephoneObligatoire]);
             }
         }
 
@@ -343,10 +355,10 @@ namespace TransactionNS
                     if (value != string.Empty)
                         type = value;
                     else
-                        throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.typeInvalide]);
+                        throw new ArgumentException(tMessagesErreurs[(int)CodeErreurs.typeInvalide]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.typeObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.typeObligatoire]);
             }
         }
 
@@ -362,10 +374,10 @@ namespace TransactionNS
                     if (Array.IndexOf(tMarques, value) != -1)
                         marque = value;
                     else
-                        throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.marqueInvalide]);
+                        throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.marqueInvalide]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.marqueObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.marqueObligatoire]);
             }
         }
         
@@ -382,10 +394,10 @@ namespace TransactionNS
                     if (Array.IndexOf(tModel, value) != -1)
                         modele = value;
                     else
-                        throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
+                        throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.modelInvalide]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.modelObligatoire]);
+                    throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.modelObligatoire]);
             }
         }
 
@@ -400,7 +412,7 @@ namespace TransactionNS
                     datePaiement = dateLivraison.AddDays(30);
                 }
                 else
-                    throw new ArgumentOutOfRangeException(tMessagesErrurs[(int)CodeErreurs.dateInvalide]);
+                    throw new ArgumentOutOfRangeException(tMessagesErreurs[(int)CodeErreurs.dateInvalide]);
             }
         }
 
@@ -419,13 +431,13 @@ namespace TransactionNS
                         if (tPrix[positionMarque, positionModel] == value)
                             prix = value;
                         else
-                            throw new ArgumentException(tMessagesErrurs[(int)CodeErreurs.prixInvalide]);
+                            throw new ArgumentException(tMessagesErreurs[(int)CodeErreurs.prixInvalide]);
                     }
                     else 
-                        throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.prixInvalide]);
+                        throw new ArgumentNullException(tMessagesErreurs[(int)CodeErreurs.prixInvalide]);
                 }
                 else
-                    throw new ArgumentOutOfRangeException(tMessagesErrurs[(int)CodeErreurs.prixInvalide]);
+                    throw new ArgumentOutOfRangeException(tMessagesErreurs[(int)CodeErreurs.prixInvalide]);
             }
         }
 
@@ -435,10 +447,10 @@ namespace TransactionNS
 
         public Transaction()
         {
+            InitMessagesErreurs();
             InitMarques();
             InitModel();
             InitPrix();
-            InitMessagesErreurs();
         }
 
         /// <summary>
@@ -557,7 +569,6 @@ namespace TransactionNS
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
                                 string type, string modele, DateTime dateLivraison, decimal prix, string marque)
         {
-            Console.WriteLine(prix);
             this.Nom = nom;
             this.Prenom = prenom;
             this.Adresse = adresse;

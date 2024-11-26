@@ -43,8 +43,11 @@ namespace TypesNS
 
         private void InitAnnes()
         {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\.."));
+            string filePath = Path.Combine(projectRoot, "Data", "Annees.data");
 
-            using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Annees.data"))
+            using (StreamReader sr = new StreamReader(filePath))
             {
                 try
                 {
@@ -79,8 +82,11 @@ namespace TypesNS
 
         private void InitTypes()
         {
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\.."));
+            string filePath = Path.Combine(projectRoot, "Data", "Types.data");
 
-            using (StreamReader sr = new StreamReader("C:\\Users\\ejalbert26\\Desktop\\Ventes iPhones\\Ventes iPhones\\Data\\Types.data"))
+            using (StreamReader sr = new StreamReader(filePath))
             {
                 try
                 {
@@ -95,9 +101,6 @@ namespace TypesNS
                     }
 
                     Array.Resize(ref tTypes, i);
-
-                    Console.WriteLine(tTypes[0]);
-                    Console.WriteLine(tTypes[1]);
 
                 }
                 catch (FormatException)
