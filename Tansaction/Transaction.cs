@@ -24,6 +24,7 @@ namespace TransactionNS
         public static int numTransaction = 0;
         private const string CODE_POSTAL_CANADIEN_PATTERN_String = @"[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]";
         private const string TELEPHONE_CANADIEN_PATTERN_String = "^(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$";
+        private const string CULTURE_CA = "en-CA";
 
         #endregion
 
@@ -48,7 +49,9 @@ namespace TransactionNS
             modelInvalide,
             modelObligatoire,
             typeObligatoire,
-            typeInvalide
+            typeInvalide,
+            convertionImpossible,
+            fichierInvalide
         }
 
         private string[] tMessagesErrurs;
@@ -74,6 +77,9 @@ namespace TransactionNS
             tMessagesErrurs[(int)CodeErreurs.telephoneObligatoire] = "Le numero de telephone est obligatoire";
             tMessagesErrurs[(int)CodeErreurs.typeInvalide] = "Type invalide";
             tMessagesErrurs[(int)CodeErreurs.typeObligatoire] = "Le type est obligatoire";
+            tMessagesErrurs[(int)CodeErreurs.convertionImpossible] = "Impossible de convertir le prix en valeur réelle.";
+            tMessagesErrurs[(int)CodeErreurs.fichierInvalide] = "Le fichier des prix n’est pas disponible.";
+
 
         }
 
@@ -121,15 +127,15 @@ namespace TransactionNS
             }
             catch (FormatException)
             {
-                throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+                throw new FormatException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (FileNotFoundException)
             {
-                throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+                throw new FileNotFoundException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (Exception)
             {
-                throw new Exception("Erreur indéterminée dans la lecture des prix.");
+                throw new Exception(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
             }
         }
 
@@ -152,15 +158,15 @@ namespace TransactionNS
             }
             catch (FormatException)
             {
-                throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+                throw new FormatException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (FileNotFoundException)
             {
-                throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+                throw new FileNotFoundException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
             }
             catch (Exception)
             {
-                throw new Exception("Erreur indéterminée dans la lecture des prix.");
+                throw new Exception(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
             }
         }
 
@@ -175,19 +181,17 @@ namespace TransactionNS
 
                     for (int ran = 0; ran <= tMarques.Length - 1; ran++)
                         for (int col = 0; col <= tModel.Length - 1; col++)
-                            tPrix[ran, col] = decimal.Parse(sr.ReadLine(), CultureInfo.CreateSpecificCulture("en-CA"));
-
-                    ResizeArray(tPrix, rangee, colonne);   
+                            tPrix[ran, col] = decimal.Parse(sr.ReadLine(), CultureInfo.CreateSpecificCulture(CULTURE_CA));   
 
                 }
             }
             catch (FormatException)
             {
-                throw new FormatException("Impossible de convertir le prix en valeur réelle.");
+                throw new FormatException(tMessagesErrurs[(int)CodeErreurs.convertionImpossible]);
             }
             catch (FileNotFoundException)
             {
-                throw new FileNotFoundException("Le fichier des prix n’est pas disponible.");
+                throw new FileNotFoundException(tMessagesErrurs[(int)CodeErreurs.fichierInvalide]);
             }
             catch (Exception)
             {
@@ -197,20 +201,7 @@ namespace TransactionNS
 
         #endregion
 
-        #region ResizeArray
-
-        T[,] ResizeArray<T>(T[,] original, int rows, int cols)
-        {
-            var newArray = new T[rows, cols];
-            int minRows = Math.Min(rows, original.GetLength(0));
-            int minCols = Math.Min(cols, original.GetLength(1));
-            for (int i = 0; i < minRows; i++)
-                for (int j = 0; j < minCols; j++)
-                    newArray[i, j] = original[i, j];
-            return newArray;
-        }
-
-        #endregion
+        
 
         #region Propriétés
 
@@ -391,10 +382,10 @@ namespace TransactionNS
                     if (Array.IndexOf(tModel, value) != -1)
                         modele = value;
                     else
-                        throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.marqueInvalide]);
+                        throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.modelInvalide]);
                 }
                 else
-                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.marqueObligatoire]);
+                    throw new ArgumentNullException(tMessagesErrurs[(int)CodeErreurs.modelObligatoire]);
             }
         }
 
