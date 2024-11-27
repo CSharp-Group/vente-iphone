@@ -5,6 +5,7 @@ using System.Net.Mime;
 using System.Reflection;
 using System.Security.AccessControl;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace TransactionNS
 {
@@ -553,14 +554,46 @@ namespace TransactionNS
         public void Enregistrer()
         {
             numTransaction++;
+            // Chemin vers le dossier Data et le fichier Transactions.data
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\.."));
+            string dataFolder = Path.Combine(projectRoot, "Data");
+            string filePath = Path.Combine(dataFolder, "Transactions.data");
 
-            Console.WriteLine($"Transaction #{numTransaction}");
-            Console.WriteLine($"Transaction de {Nom} {Prenom}:");
-            Console.WriteLine($"Adresse: {Adresse}, {CodePostal}");
-            Console.WriteLine($"Téléphone: {Telephone}");
-            Console.WriteLine($"Type: {Type}, Modèle: {Modele}");
-            Console.WriteLine($"Date de livraison: {DateLivraison.ToShortDateString()}");
-            Console.WriteLine($"Prix: {Prix:C}");
+            if (!Directory.Exists(dataFolder))
+            {
+                Directory.CreateDirectory(dataFolder);
+            }
+
+
+            CultureInfo culture = new CultureInfo("en-CA", false);
+
+            string data = "";
+            data += numTransaction + ";";
+            data += nom + ";";
+            data += prenom + ";";
+            data += adresse + ";";
+            data += codePostal + ";";
+            data += telephone + ";";
+            data += type + ";";
+            data += annee + ";";
+            data += marque + ";";
+            data += modele + ";";
+            data += dateLivraison.ToShortDateString() + ";";
+            data += prix.ToString("C", culture) + ";";
+
+            using (StreamWriter sw = new StreamWriter(filePath, true))
+            {
+                sw.WriteLine(data);
+            }
+
+            //Console.WriteLine($"Transaction #{numTransaction}");
+            //Console.WriteLine($"Transaction de {Nom} {Prenom}:");
+            //Console.WriteLine($"Adresse: {Adresse}, {CodePostal}");
+            //Console.WriteLine($"Téléphone: {Telephone}");
+            //Console.WriteLine($"Type: {Type}, Modèle: {Modele}");
+            //Console.WriteLine($"Date de livraison: {DateLivraison.ToShortDateString()}");
+            //Console.WriteLine($"Prix: {Prix:C}");
         }
 
         /// <summary>
