@@ -574,26 +574,33 @@ namespace TransactionNS
             }
 
 
-            CultureInfo culture = new CultureInfo("en-CA", false);
-
-            string data = "";
-            data += id + ";";
-            data += nom + ";";
-            data += prenom + ";";
-            data += adresse + ";";
-            data += codePostal + ";";
-            data += telephone + ";";
-            data += type + ";";
-            data += annee + ";";
-            data += marque + ";";
-            data += modele + ";";
-            data += dateLivraison.ToShortDateString() + ";";
-            data += prix.ToString("C", culture) + ";";
-
-            using (StreamWriter sw = new StreamWriter(filePath, true))
+            try
             {
-                sw.WriteLine(data);
+                CultureInfo culture = new CultureInfo("en-CA", false);
+
+                string data = "";
+                data += id + ";";
+                data += nom + ";";
+                data += prenom + ";";
+                data += adresse + ";";
+                data += codePostal + ";";
+                data += telephone + ";";
+                data += type + ";";
+                data += annee + ";";
+                data += marque + ";";
+                data += modele + ";";
+                data += dateLivraison.ToShortDateString() + ";";
+                data += prix.ToString("C", culture) + ";";
+
+                using (StreamWriter sw = new StreamWriter(filePath, true))
+                {
+                    sw.WriteLine(data);
+                }
+            } catch (Exception ex)
+            {
+                throw new Exception("Erreur lors de l'enregistrement de la transaction: " + ex.Message);
             }
+            
 
             //Console.WriteLine($"Transaction #{numTransaction}");
             //Console.WriteLine($"Transaction de {Nom} {Prenom}:");
