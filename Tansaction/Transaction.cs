@@ -6,6 +6,10 @@ using System.Reflection;
 using System.Security.AccessControl;
 using System.Text.RegularExpressions;
 using System.Text;
+using static System.Net.WebRequestMethods;
+using System.Diagnostics;
+using System.Net;
+using System.Net.NetworkInformation;
 
 namespace TransactionNS
 {
@@ -22,7 +26,6 @@ namespace TransactionNS
         #region Declaration des champs prives
 
         public DateTime datePaiement;
-        public static int numTransaction = 0;
         private const string CODE_POSTAL_CANADIEN_PATTERN_String = @"[A-Z][0-9][A-Z] ?[0-9][A-Z][0-9]";
         private const string TELEPHONE_CANADIEN_PATTERN_String = "^(\\([2-9]\\d{2}\\)|[2-9]\\d{2})[- .]?\\d{3}[- .]?\\d{4}$";
         private const string CULTURE_CA = "en-CA";
@@ -92,7 +95,7 @@ namespace TransactionNS
         private string[] tModel = new string[20];
         private decimal[,] tPrix = new decimal[20, 20];
 
-        private int id;
+        private readonly long id;
         private string nom;
         private string prenom;
         private string adresse;
@@ -213,12 +216,12 @@ namespace TransactionNS
         }
 
         #endregion
-
+        
         
 
         #region Propriétés
 
-        public int Id
+        public long Id
         {
             get { return id; }
         }
@@ -452,6 +455,8 @@ namespace TransactionNS
             InitMarques();
             InitModel();
             InitPrix();
+
+            id = DateTime.UtcNow.Ticks;
         }
 
         /// <summary>
@@ -553,8 +558,6 @@ namespace TransactionNS
         /// </summary>
         public void Enregistrer()
         {
-            numTransaction++;
-            // Chemin vers le dossier Data et le fichier Transactions.data
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\.."));
             string dataFolder = Path.Combine(projectRoot, "Data");
@@ -565,11 +568,16 @@ namespace TransactionNS
                 Directory.CreateDirectory(dataFolder);
             }
 
+            if (!TransactionComplete())
+            {
+                throw new Exception("Transaction incomplète");
+            }
+
 
             CultureInfo culture = new CultureInfo("en-CA", false);
 
             string data = "";
-            data += numTransaction + ";";
+            data += id + ";";
             data += nom + ";";
             data += prenom + ";";
             data += adresse + ";";
@@ -600,7 +608,7 @@ namespace TransactionNS
         /// Enregistrer la transaction avec des paramètres
         /// </summary>
         public void Enregistrer(string nom, string prenom, string adresse, string codePostal, string telephone,
-                                string type, string modele, DateTime dateLivraison, decimal prix, string marque)
+                                string type,string annee, string marque, string modele, DateTime dateLivraison, decimal prix)
         {
             this.Nom = nom;
             this.Prenom = prenom;
@@ -608,6 +616,7 @@ namespace TransactionNS
             this.CodePostal = codePostal;
             this.Telephone = telephone;
             this.Type = type;
+            this.Annee = annee;
             this.Modele = modele;
             this.DateLivraison = dateLivraison;
             this.Marque = marque;
@@ -618,6 +627,25 @@ namespace TransactionNS
             Enregistrer();
         }
 
+        #endregion
+
+        #region Transaction Complete
+        public bool TransactionComplete()
+        {
+            if (string.IsNullOrWhiteSpace(this.Nom)) return false;
+            if (string.IsNullOrWhiteSpace(this.Prenom)) return false;
+            if (string.IsNullOrWhiteSpace(this.Adresse)) return false;
+            if (string.IsNullOrWhiteSpace(this.CodePostal)) return false;
+            if (string.IsNullOrWhiteSpace(this.Telephone)) return false;
+            if (string.IsNullOrWhiteSpace(this.Type)) return false;
+            if (string.IsNullOrWhiteSpace(this.Modele)) return false;
+            if (string.IsNullOrWhiteSpace(this.Marque)) return false;
+            if (string.IsNullOrWhiteSpace(this.Annee)) return false;
+            if (this.DateLivraison == null) return false;
+            if (this.Prix == 0) return false;
+
+            return true;
+        }
         #endregion
     }
 }

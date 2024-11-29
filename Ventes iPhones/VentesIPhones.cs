@@ -149,9 +149,9 @@ namespace VentesIPhones
             try
             {
                 oTrans.Enregistrer(nomMaskedTextBox.Text, prenomMaskedTextBox.Text, adresseMaskedTextBox.Text,
-                    codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text,
-                    modelComboBox.Text, DateTime.Parse(dateLivraisonDateTimePicker.Text), Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency),
-                    marquesComboBox.Text);
+                    codePostalMaskedTextBox.Text, telephoneMaskedTextBox.Text, typesComboBox.Text, anneesComboBox.Text, marquesComboBox.Text,
+                    modelComboBox.Text, DateTime.Parse(dateLivraisonDateTimePicker.Text), Decimal.Parse(prixLabel.Text, System.Globalization.NumberStyles.Currency)
+                    );
 
                 paiementDuLabel.Text = oTrans.datePaiement.ToShortDateString();
             }
